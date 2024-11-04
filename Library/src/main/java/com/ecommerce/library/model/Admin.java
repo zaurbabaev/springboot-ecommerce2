@@ -14,7 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Table(name = "admins", uniqueConstraints = @UniqueConstraint(columnNames = {"username", "image"}))
-@JsonIdentityInfo(generator= ObjectIdGenerators.PropertyGenerator.class,property = "id")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Admin {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -6,7 +6,6 @@ import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 
 import java.util.HashSet;
@@ -16,12 +15,12 @@ import java.util.Set;
 @Entity
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @AllArgsConstructor
-@NoArgsConstructor
 @Table(name = "shopping_cart")
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class ShoppingCart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "shopping_cart_id")
     Long id;
     @OneToOne
     @JoinColumn(name = "customer_id", referencedColumnName = "customer_id")
@@ -32,10 +31,10 @@ public class ShoppingCart {
     @OneToMany(cascade = CascadeType.DETACH, mappedBy = "cart")
     Set<CartItem> cartItems;
 
-    public ShoppingCart(){
-        this.cartItems=new HashSet<>();
-        this.totalItems=0;
-        this.totalPrice=0.0;
+    public ShoppingCart() {
+        this.cartItems = new HashSet<>();
+        this.totalItems = 0;
+        this.totalPrice = 0.0;
     }
 
     @Override

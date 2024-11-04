@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th = "https://www.thymeleaf.org/">
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
 
 <head th:fragment="header">
     <meta charset="utf-8">
@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title th:text = "${title}"></title>
+    <title th:text="${title}"></title>
 
     <!-- Custom fonts for this template-->
     <link th:href="@{/vendor/fontawesome-free/css/all.min.css}" rel="stylesheet" type="text/css">
@@ -68,7 +68,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Custom Components:</h6>
                 <a class="collapse-item active" th:href="@{/categories}">Manage Category</a>
-                <a class="collapse-item" th:href = "@{/products/0}">Manage Product</a>
+                <a class="collapse-item" th:href="@{/products/0}">Manage Product</a>
             </div>
         </div>
     </li>
@@ -263,7 +263,8 @@
                     </div>
                     <div class="font-weight-bold">
                         <div class="text-truncate">Hi there! I am wondering if you can help me with a
-                            problem I've been having.</div>
+                            problem I've been having.
+                        </div>
                         <div class="small text-gray-500">Emily Fowler · 58m</div>
                     </div>
                 </a>
@@ -275,7 +276,8 @@
                     </div>
                     <div>
                         <div class="text-truncate">I have the photos that you ordered last month, how
-                            would you like them sent to you?</div>
+                            would you like them sent to you?
+                        </div>
                         <div class="small text-gray-500">Jae Chun · 1d</div>
                     </div>
                 </a>
@@ -287,7 +289,8 @@
                     </div>
                     <div>
                         <div class="text-truncate">Last month's report looks great, I am very happy with
-                            the progress so far, keep up the good work!</div>
+                            the progress so far, keep up the good work!
+                        </div>
                         <div class="small text-gray-500">Morgan Alvarez · 2d</div>
                     </div>
                 </a>
@@ -299,7 +302,8 @@
                     </div>
                     <div>
                         <div class="text-truncate">Am I a good boy? The reason I ask is because someone
-                            told me that people say this to all dogs, even if they aren't good...</div>
+                            told me that people say this to all dogs, even if they aren't good...
+                        </div>
                         <div class="small text-gray-500">Chicken the Dog · 2w</div>
                     </div>
                 </a>

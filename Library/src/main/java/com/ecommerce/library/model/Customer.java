@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 
 import java.util.ArrayList;
@@ -14,7 +13,6 @@ import java.util.Set;
 @Data
 @Entity
 @FieldDefaults(level = AccessLevel.PRIVATE)
-@NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "customers", uniqueConstraints = @UniqueConstraint(columnNames = "username"))
 public class Customer {
@@ -30,7 +28,7 @@ public class Customer {
     String address;
 
     @OneToOne
-    @JoinColumn(name = "name", referencedColumnName = "id")
+    @JoinColumn(name = "name", referencedColumnName = "city_id")
     City city;
     String country;
 

@@ -61,7 +61,8 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <input type="password" class="form-control form-control-user"
-                                           th:field="*{repeatPassword}" id="repeatPassword" placeholder="Repeat Password">
+                                           th:field="*{repeatPassword}" id="repeatPassword"
+                                           placeholder="Repeat Password">
                                     <div class="alert alert-danger" th:if="${#fields.hasErrors('repeatPassword')}"
                                          th:errors="*{repeatPassword}"></div>
                                 </div>

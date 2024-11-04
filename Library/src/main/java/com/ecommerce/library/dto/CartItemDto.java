@@ -1,6 +1,5 @@
 package com.ecommerce.library.dto;
 
-import com.ecommerce.library.model.ShoppingCart;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;

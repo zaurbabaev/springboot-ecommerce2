@@ -16,6 +16,7 @@ import lombok.experimental.FieldDefaults;
 public class City {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "city_id")
     Long id;
     String name;
     @ManyToOne(cascade = CascadeType.ALL)

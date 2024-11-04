@@ -19,8 +19,8 @@ import java.util.List;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity
 @Table(name = "orders")
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id")
-public class    Order {
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "order_id")
@@ -36,7 +36,7 @@ public class    Order {
     boolean isAccept;
 
     @ManyToOne
-    @JoinColumn(name = "customer_id", referencedColumnName = "custoner_id")
+    @JoinColumn(name = "customer_id", referencedColumnName = "customer_id")
     Customer customer;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "order")
     List<OrderDetail> orderDetailsList;

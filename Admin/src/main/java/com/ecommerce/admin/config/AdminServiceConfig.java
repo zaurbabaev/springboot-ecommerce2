@@ -2,9 +2,6 @@ package com.ecommerce.admin.config;
 
 import com.ecommerce.library.model.Admin;
 import com.ecommerce.library.repository.AdminRepository;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;

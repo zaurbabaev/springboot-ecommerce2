@@ -21,7 +21,7 @@ public class Category {
     @Column(name = "category_id")
     Long id;
     String name;
-    boolean IsActivated;
+    boolean isActivated;
     boolean isDeleted;
 
 }
