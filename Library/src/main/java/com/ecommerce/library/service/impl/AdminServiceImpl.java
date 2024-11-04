@@ -1,12 +1,13 @@
 package com.ecommerce.library.service.impl;
 
-import com.ecommerce.library.dto.AdminDTO;
+import com.ecommerce.library.dto.AdminDto;
 import com.ecommerce.library.model.Admin;
 import com.ecommerce.library.repository.AdminRepository;
 import com.ecommerce.library.repository.RoleRepository;
 import com.ecommerce.library.service.AdminService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
@@ -15,6 +16,7 @@ import java.util.Collections;
 @RequiredArgsConstructor
 public class AdminServiceImpl implements AdminService {
 
+    private BCryptPasswordEncoder passwordEncoder;
     private final AdminRepository adminRepository;
     private final RoleRepository roleRepository;
     private final ModelMapper mapper;
@@ -26,10 +28,10 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public Admin save(AdminDTO adminDTO) {
+    public Admin save(AdminDto adminDTO) {
         Admin admin = mapper.map(adminDTO, Admin.class);
         admin.setRoles(Collections.singletonList(roleRepository.findByName("ADMIN")));
-        return admin;
+        return adminRepository.save(admin);
     }
 
 
