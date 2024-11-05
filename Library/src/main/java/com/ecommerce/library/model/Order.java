@@ -32,7 +32,8 @@ public class Order {
     double totalPrice;
     double tax;
     int quantity;
-    String paymentMethod;
+    @Enumerated(EnumType.STRING)
+    OrderStatus paymentMethod;
     boolean isAccept;
 
     @ManyToOne

@@ -16,7 +16,7 @@ public interface ShoppingCartService {
 
     ShoppingCartDto updateCartSession(ShoppingCartDto cartDto, ProductDto productDto, int quantity);
 
-    ShoppingCartDto removeItenFromCartSession(ShoppingCartDto cartDto, ProductDto productDto, int quantity);
+    ShoppingCartDto removeItemFromCartSession(ShoppingCartDto cartDto, ProductDto productDto, int quantity);
 
     ShoppingCart combineCart(ShoppingCartDto cartDto, ShoppingCart cart);
 

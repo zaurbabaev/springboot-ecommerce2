@@ -17,7 +17,7 @@ public class ProductDto {
     int currentQuantity;
     double costPrice;
     double salePrice;
-    byte[] image;
+    String image;
     CategoryDto category;
     boolean isActivated;
     boolean isDeleted;

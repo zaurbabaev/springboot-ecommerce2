@@ -20,7 +20,7 @@ public class CustomerDto {
     String phoneNumber;
     String address;
     City city;
-    byte[] image;
+    String image;
     String country;
 
 }

@@ -49,7 +49,7 @@ public class AuthController {
 
     @GetMapping("/forgot-password")
     public String forgotPassword(Model model) {
-        model.addAttribute("tirtle", "Forgot Password");
+        model.addAttribute("title", "Forgot Password");
         return "forgot-password";
     }
 
@@ -89,6 +89,5 @@ public class AuthController {
         }
         return "register";
     }
-
 
 }

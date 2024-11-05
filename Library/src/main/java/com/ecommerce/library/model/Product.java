@@ -24,8 +24,8 @@ public class Product {
     double costPrice;
     double salePrice;
     @Lob
-    @Column(columnDefinition = "BYTEA")
-    private byte[] image;
+    @Column(columnDefinition = "TEXT")
+    private String image;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "category_id", referencedColumnName = "category_id")
