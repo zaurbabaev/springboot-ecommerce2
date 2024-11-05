@@ -2,11 +2,10 @@ package com.ecommerce.library.service.impl;
 
 import com.ecommerce.library.dto.CartItemDto;
 import com.ecommerce.library.dto.ProductDto;
-import com.ecommerce.library.dto.ShoppingCartDto;
+import com.ecommerce.library.dto.ShoppingCart;
 import com.ecommerce.library.model.CartItem;
 import com.ecommerce.library.model.Customer;
 import com.ecommerce.library.model.Product;
-import com.ecommerce.library.model.ShoppingCart;
 import com.ecommerce.library.repository.CartItemRepository;
 import com.ecommerce.library.repository.ShoppingCartRepository;
 import com.ecommerce.library.service.CustomerService;
@@ -32,12 +31,12 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
 
     @Override
     @Transactional
-    public ShoppingCart addItemToCart(ProductDto productDto, int quantity, String username) {
+    public com.ecommerce.library.model.ShoppingCart addItemToCart(ProductDto productDto, int quantity, String username) {
         Customer customer = customerService.findByUsername(username);
-        ShoppingCart shoppingCart = customer.getCart();
+        com.ecommerce.library.model.ShoppingCart shoppingCart = customer.getCart();
 
         if (shoppingCart == null) {
-            shoppingCart = new ShoppingCart();
+            shoppingCart = new com.ecommerce.library.model.ShoppingCart();
         }
         Set<CartItem> cartItemList = shoppingCart.getCartItems();
         CartItem cartItem = find(cartItemList, productDto.getId());
@@ -91,9 +90,9 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
 
     @Override
     @Transactional
-    public ShoppingCart updateCart(ProductDto productDto, int quantity, String username) {
+    public com.ecommerce.library.model.ShoppingCart updateCart(ProductDto productDto, int quantity, String username) {
         Customer customer = customerService.findByUsername(username);
-        ShoppingCart shoppingCart = customer.getCart();
+        com.ecommerce.library.model.ShoppingCart shoppingCart = customer.getCart();
         Set<CartItem> cartItems = shoppingCart.getCartItems();
         CartItem cartItem = find(cartItems, productDto.getId());
         cartItem.setQuantity(quantity);
@@ -108,9 +107,9 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
 
     @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW)
-    public ShoppingCart removeItemFromCart(ProductDto productDto, String username) {
+    public com.ecommerce.library.model.ShoppingCart removeItemFromCart(ProductDto productDto, String username) {
         Customer customer = customerService.findByUsername(username);
-        ShoppingCart shoppingCart = customer.getCart();
+        com.ecommerce.library.model.ShoppingCart shoppingCart = customer.getCart();
         Set<CartItem> cartItems = shoppingCart.getCartItems();
         CartItem cartItem = find(cartItems, productDto.getId());
         cartItems.remove(cartItem);
@@ -124,10 +123,10 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     }
 
     @Override
-    public ShoppingCartDto addItemToCartSession(ShoppingCartDto cartDto, ProductDto productDto, int quantity) {
+    public ShoppingCart addItemToCartSession(ShoppingCart cartDto, ProductDto productDto, int quantity) {
         CartItemDto cartItemDto = findInDto(cartDto, productDto.getId());
         if (cartDto == null) {
-            cartDto = new ShoppingCartDto();
+            cartDto = new ShoppingCart();
         }
         Set<CartItemDto> cartItems = cartDto.getCartItems();
         double unitPrice = productDto.getCostPrice();
@@ -172,7 +171,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     }
 
     @Override
-    public ShoppingCartDto updateCartSession(ShoppingCartDto cartDto, ProductDto productDto, int quantity) {
+    public ShoppingCart updateCartSession(ShoppingCart cartDto, ProductDto productDto, int quantity) {
         Set<CartItemDto> cartItems = cartDto.getCartItems();
         CartItemDto item = findInDto(cartDto, productDto.getId());
         int itemQuantity = item.getQuantity() + quantity;
@@ -187,7 +186,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     }
 
     @Override
-    public ShoppingCartDto removeItemFromCartSession(ShoppingCartDto cartDto, ProductDto productDto, int quantity) {
+    public ShoppingCart removeItemFromCartSession(ShoppingCart cartDto, ProductDto productDto, int quantity) {
         Set<CartItemDto> cartItems = cartDto.getCartItems();
         CartItemDto itemDto = findInDto(cartDto, productDto.getId());
         cartItems.remove(itemDto);
@@ -201,9 +200,9 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     }
 
     @Override
-    public ShoppingCart combineCart(ShoppingCartDto cartDto, ShoppingCart cart) {
+    public com.ecommerce.library.model.ShoppingCart combineCart(ShoppingCart cartDto, com.ecommerce.library.model.ShoppingCart cart) {
         if (cart == null) {
-            cart = new ShoppingCart();
+            cart = new com.ecommerce.library.model.ShoppingCart();
         }
         Set<CartItem> cartItems = cart.getCartItems();
         if (cartItems == null) {
@@ -222,7 +221,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     @Override
     @Transactional
     public void deleteCartById(Long id) {
-        ShoppingCart shoppingCart = shoppingCartRepository.getById(id);
+        com.ecommerce.library.model.ShoppingCart shoppingCart = shoppingCartRepository.getById(id);
         if (!ObjectUtils.isEmpty(shoppingCart) && !ObjectUtils.isEmpty(shoppingCart.getCartItems())) {
             cartItemRepository.deleteAll(shoppingCart.getCartItems());
         }
@@ -233,12 +232,12 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     }
 
     @Override
-    public ShoppingCart getCart(String username) {
+    public com.ecommerce.library.model.ShoppingCart getCart(String username) {
         Customer customer = customerService.findByUsername(username);
         return customer.getCart();
     }
 
-    private CartItemDto findInDto(ShoppingCartDto shoppingCartDto, long productId) {
+    private CartItemDto findInDto(ShoppingCart shoppingCartDto, long productId) {
         return shoppingCartDto.getCartItems().stream()
                 .filter(item -> item.getProduct().getId().equals(productId))
                 .findAny()
@@ -291,7 +290,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
         return totalPrice;
     }
 
-    private Set<CartItem> convertCartItem(Set<CartItemDto> cartItemDtos, ShoppingCart cart) {
+    private Set<CartItem> convertCartItem(Set<CartItemDto> cartItemDtos, com.ecommerce.library.model.ShoppingCart cart) {
         HashSet<CartItem> cartItems = new HashSet<>();
         for (CartItemDto cartItemDto : cartItemDtos) {
             CartItem cartItem = new CartItem();

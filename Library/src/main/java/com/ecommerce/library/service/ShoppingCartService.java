@@ -1,26 +1,25 @@
 package com.ecommerce.library.service;
 
 import com.ecommerce.library.dto.ProductDto;
-import com.ecommerce.library.dto.ShoppingCartDto;
-import com.ecommerce.library.model.ShoppingCart;
+import com.ecommerce.library.dto.ShoppingCart;
 
 public interface ShoppingCartService {
 
-    ShoppingCart addItemToCart(ProductDto productDto, int quantity, String username);
+    com.ecommerce.library.model.ShoppingCart addItemToCart(ProductDto productDto, int quantity, String username);
 
-    ShoppingCart updateCart(ProductDto productDto, int quantity, String username);
+    com.ecommerce.library.model.ShoppingCart updateCart(ProductDto productDto, int quantity, String username);
 
-    ShoppingCart removeItemFromCart(ProductDto productDto, String username);
+    com.ecommerce.library.model.ShoppingCart removeItemFromCart(ProductDto productDto, String username);
 
-    ShoppingCartDto addItemToCartSession(ShoppingCartDto cartDto, ProductDto productDto, int quantity);
+    ShoppingCart addItemToCartSession(ShoppingCart cartDto, ProductDto productDto, int quantity);
 
-    ShoppingCartDto updateCartSession(ShoppingCartDto cartDto, ProductDto productDto, int quantity);
+    ShoppingCart updateCartSession(ShoppingCart cartDto, ProductDto productDto, int quantity);
 
-    ShoppingCartDto removeItemFromCartSession(ShoppingCartDto cartDto, ProductDto productDto, int quantity);
+    ShoppingCart removeItemFromCartSession(ShoppingCart cartDto, ProductDto productDto, int quantity);
 
-    ShoppingCart combineCart(ShoppingCartDto cartDto, ShoppingCart cart);
+    com.ecommerce.library.model.ShoppingCart combineCart(ShoppingCart cartDto, com.ecommerce.library.model.ShoppingCart cart);
 
     void deleteCartById(Long id);
 
-    ShoppingCart getCart(String username);
+    com.ecommerce.library.model.ShoppingCart getCart(String username);
 }

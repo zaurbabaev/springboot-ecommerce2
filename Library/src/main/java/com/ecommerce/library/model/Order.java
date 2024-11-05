@@ -1,6 +1,7 @@
 package com.ecommerce.library.model;
 
 import com.ecommerce.library.enums.OrderStatus;
+import com.ecommerce.library.enums.PaymentMethod;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
@@ -33,7 +34,7 @@ public class Order {
     double tax;
     int quantity;
     @Enumerated(EnumType.STRING)
-    OrderStatus paymentMethod;
+    PaymentMethod paymentMethod;
     boolean isAccept;
 
     @ManyToOne

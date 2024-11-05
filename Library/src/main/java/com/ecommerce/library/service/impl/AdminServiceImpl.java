@@ -16,7 +16,6 @@ import java.util.Collections;
 @RequiredArgsConstructor
 public class AdminServiceImpl implements AdminService {
 
-    private BCryptPasswordEncoder passwordEncoder;
     private final AdminRepository adminRepository;
     private final RoleRepository roleRepository;
     private final ModelMapper mapper;

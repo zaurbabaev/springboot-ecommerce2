@@ -1,5 +1,6 @@
 package com.ecommerce.library.dto;
 
+import com.ecommerce.library.model.CartItem;
 import com.ecommerce.library.model.Customer;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -13,10 +14,10 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class ShoppingCartDto {
+public class ShoppingCart {
     Long id;
     Customer customer;
     double totalPrice;
     int totalItems;
-    Set<CartItemDto> cartItems;
+    Set<CartItem> cartItems;
 }

@@ -1,13 +1,13 @@
 package com.ecommerce.library.service;
 
-import com.ecommerce.library.dto.ShoppingCartDto;
+import com.ecommerce.library.dto.ShoppingCart;
 import com.ecommerce.library.model.Order;
 
 import java.util.List;
 
 public interface OrderService {
 
-    Order save(ShoppingCartDto shoppingCartDto);
+    Order save(ShoppingCart shoppingCart);
 
     List<Order> findAll(String username);
 
