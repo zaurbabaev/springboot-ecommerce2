@@ -14,10 +14,10 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class ShoppingCart {
+public class ShoppingCartDto {
     Long id;
     Customer customer;
     double totalPrice;
     int totalItems;
-    Set<CartItem> cartItems;
+    Set<CartItemDto> cartItems;
 }

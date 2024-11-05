@@ -1,12 +1,8 @@
 package com.ecommerce.library.service.impl;
 
-import com.ecommerce.library.dto.ShoppingCart;
 import com.ecommerce.library.enums.OrderStatus;
 import com.ecommerce.library.enums.PaymentMethod;
-import com.ecommerce.library.model.CartItem;
-import com.ecommerce.library.model.Customer;
-import com.ecommerce.library.model.Order;
-import com.ecommerce.library.model.OrderDetail;
+import com.ecommerce.library.model.*;
 import com.ecommerce.library.repository.CustomerRepository;
 import com.ecommerce.library.repository.OrderDetailRepository;
 import com.ecommerce.library.repository.OrderRepository;

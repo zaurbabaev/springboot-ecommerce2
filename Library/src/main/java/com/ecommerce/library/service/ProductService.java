@@ -34,7 +34,7 @@ public interface ProductService {
 
     Page<ProductDto> getAllProductsForCustomer(int pageNo);
 
-    List<CategoryDto> findAllCategory(String category);
+    List<ProductDto> findAllCategory(String category);
 
     List<ProductDto> filterHighProducts();
 

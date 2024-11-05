@@ -12,7 +12,7 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class CartItemDto {
     Long id;
-    ShoppingCart cart;
+    ShoppingCartDto cart;
     ProductDto product;
     int quantity;
     double unitPrice;

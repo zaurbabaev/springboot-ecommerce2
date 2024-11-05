@@ -2,10 +2,11 @@ package com.ecommerce.library.service.impl;
 
 import com.ecommerce.library.dto.CartItemDto;
 import com.ecommerce.library.dto.ProductDto;
-import com.ecommerce.library.dto.ShoppingCart;
+import com.ecommerce.library.dto.ShoppingCartDto;
 import com.ecommerce.library.model.CartItem;
 import com.ecommerce.library.model.Customer;
 import com.ecommerce.library.model.Product;
+import com.ecommerce.library.model.ShoppingCart;
 import com.ecommerce.library.repository.CartItemRepository;
 import com.ecommerce.library.repository.ShoppingCartRepository;
 import com.ecommerce.library.service.CustomerService;
@@ -123,10 +124,10 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     }
 
     @Override
-    public ShoppingCart addItemToCartSession(ShoppingCart cartDto, ProductDto productDto, int quantity) {
+    public ShoppingCartDto addItemToCartSession(ShoppingCartDto cartDto, ProductDto productDto, int quantity) {
         CartItemDto cartItemDto = findInDto(cartDto, productDto.getId());
         if (cartDto == null) {
-            cartDto = new ShoppingCart();
+            cartDto = new ShoppingCartDto();
         }
         Set<CartItemDto> cartItems = cartDto.getCartItems();
         double unitPrice = productDto.getCostPrice();
@@ -171,7 +172,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     }
 
     @Override
-    public ShoppingCart updateCartSession(ShoppingCart cartDto, ProductDto productDto, int quantity) {
+    public ShoppingCartDto updateCartSession(ShoppingCartDto cartDto, ProductDto productDto, int quantity) {
         Set<CartItemDto> cartItems = cartDto.getCartItems();
         CartItemDto item = findInDto(cartDto, productDto.getId());
         int itemQuantity = item.getQuantity() + quantity;
@@ -186,7 +187,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     }
 
     @Override
-    public ShoppingCart removeItemFromCartSession(ShoppingCart cartDto, ProductDto productDto, int quantity) {
+    public ShoppingCartDto removeItemFromCartSession(ShoppingCartDto cartDto, ProductDto productDto, int quantity) {
         Set<CartItemDto> cartItems = cartDto.getCartItems();
         CartItemDto itemDto = findInDto(cartDto, productDto.getId());
         cartItems.remove(itemDto);
@@ -200,9 +201,9 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     }
 
     @Override
-    public com.ecommerce.library.model.ShoppingCart combineCart(ShoppingCart cartDto, com.ecommerce.library.model.ShoppingCart cart) {
+    public ShoppingCart combineCart(ShoppingCartDto cartDto, ShoppingCart cart) {
         if (cart == null) {
-            cart = new com.ecommerce.library.model.ShoppingCart();
+            cart = new ShoppingCart();
         }
         Set<CartItem> cartItems = cart.getCartItems();
         if (cartItems == null) {
@@ -237,7 +238,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
         return customer.getCart();
     }
 
-    private CartItemDto findInDto(ShoppingCart shoppingCartDto, long productId) {
+    private CartItemDto findInDto(ShoppingCartDto shoppingCartDto, long productId) {
         return shoppingCartDto.getCartItems().stream()
                 .filter(item -> item.getProduct().getId().equals(productId))
                 .findAny()
