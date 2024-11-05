@@ -18,5 +18,7 @@ public interface CategoryRepository extends JpaRepository<Category, Long> {
             "from Category c LEFT JOIN Product p ON c.id=p.category.id WHERE c.isActivated=true and c.isDeleted=false GROUP BY c.id")
     List<CategoryDto> getCategoriesAndSize();
 
+    @Query("SELECT c FROM Category c WHERE c.isActivated=true")
+    List<Category> findAllByActivatedTrue();
 
 }

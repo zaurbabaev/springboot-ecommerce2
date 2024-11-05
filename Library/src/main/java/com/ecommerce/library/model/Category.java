@@ -9,7 +9,6 @@ import lombok.experimental.FieldDefaults;
 
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity
 @Table(name = "categories", uniqueConstraints = @UniqueConstraint(columnNames = "name"))
@@ -24,4 +23,8 @@ public class Category {
     boolean isActivated;
     boolean isDeleted;
 
+    public Category() {
+        this.isActivated = true;
+        this.isDeleted = false;
+    }
 }
